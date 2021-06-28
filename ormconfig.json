@@ -5,6 +5,7 @@
     "username": "postgres",
     "password": "35381861",
     "database": "socialplus",
+    "migrations": ["src/database/migrations/*.ts"],
     "entities": ["src/entities/*.ts"],
     "synchronize": true,
     "cli": {
