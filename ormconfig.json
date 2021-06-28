@@ -1,0 +1,14 @@
+  {
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5400,
+    "username": "postgres",
+    "password": "35381861",
+    "database": "socialplus",
+    "entities": ["src/entities/*.ts"],
+    "synchronize": true,
+    "cli": {
+      "entitiesDir": "src/entities",
+      "migrationsDir": "src/database/migrations"
+    }
+  }
