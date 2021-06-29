@@ -17,8 +17,7 @@ export class CreateUserController {
 
       return response.status(200).send(newUser);
     } catch(error) {
-      // TODO: Add check for other error status
-      return response.status(401).json({
+      return response.status(400).json({
         message: error.message || 'Unexpected error!'
       });
     }

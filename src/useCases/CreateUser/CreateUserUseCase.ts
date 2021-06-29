@@ -1,12 +1,13 @@
 import { User } from "../../entities/User";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
+import { MissinParamError } from "../../utils/errors/MissingParamsError";
 import { CreateUserDTO } from "./CreateUserDTO";
 
 export class CreateUserUseCase {
   constructor(private usersRepository: IUsersRepository) {}
 
-  async execute(data: CreateUserDTO): Promise<User> {
-    // TODO: Add check for missing params
+  public async execute(data: CreateUserDTO): Promise<User> {
+    this.validateDTO(data);
     const userAlreadyExists = !!(await this.usersRepository.findByEmail(data.email));
     if (userAlreadyExists) throw new Error('User already exists!');
     try {
@@ -15,5 +16,11 @@ export class CreateUserUseCase {
     } catch (error) {
       throw new Error(error.message || 'Internal server error');
     }
+  }
+
+  private validateDTO(data: CreateUserDTO): void {
+    Object.keys(data).forEach(requestParam => {
+      if (data[requestParam] === undefined) throw new MissinParamError(requestParam);
+    });
   }
 }
