@@ -1,6 +1,7 @@
 import { EntityManager, EntityRepository } from "typeorm";
 import { User } from "../../entities/User";
 import { CreateUserDTO } from "../../useCases/CreateUser/CreateUserDTO";
+import { UpdateUserDTO } from "../../useCases/UpdateUser/UpdateUserDTO";
 import { IUsersRepository } from "../IUsersRepository";
 
 
@@ -41,5 +42,10 @@ export class PostgresUsersRepository implements IUsersRepository {
   async getAll(): Promise<User[]> {
 
   return await this.entityManager.find(User, {});
+  }
+
+  async update(id: string, data: UpdateUserDTO): Promise<User> {
+    await this.entityManager.update(User, id, data);
+    return await this.findById(id);
   }
 }

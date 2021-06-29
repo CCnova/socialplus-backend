@@ -1,5 +1,6 @@
 import { User } from "../entities/User";
 import { CreateUserDTO } from "../useCases/CreateUser/CreateUserDTO";
+import { UpdateUserDTO } from "../useCases/UpdateUser/UpdateUserDTO";
 
 export interface IUsersRepository {
   findById(id: string): Promise<User>;
@@ -8,4 +9,5 @@ export interface IUsersRepository {
   create(data: CreateUserDTO): Promise<User>;
   save(user: User): Promise<User>;
   getAll(): Promise<User[]>;
+  update(id: string, data: UpdateUserDTO): Promise<User>;
 }
