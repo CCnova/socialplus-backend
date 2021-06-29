@@ -10,4 +10,5 @@ export interface IUsersRepository {
   save(user: User): Promise<User>;
   getAll(): Promise<User[]>;
   update(id: string, data: UpdateUserDTO): Promise<User>;
+  delete(id: string): Promise<User>;
 }

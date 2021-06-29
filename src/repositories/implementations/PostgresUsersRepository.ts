@@ -48,4 +48,10 @@ export class PostgresUsersRepository implements IUsersRepository {
     await this.entityManager.update(User, id, data);
     return await this.findById(id);
   }
+
+  async delete(id: string): Promise<User> {
+    const user = await this.findById(id);
+    await this.entityManager.delete(User, id);
+    return user;
+  }
 }
