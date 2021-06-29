@@ -1,6 +1,6 @@
 import { User } from "../../entities/User";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
-import { MissinParamError } from "../../utils/errors/MissingParamsError";
+import { MissingParamError } from "../../utils/errors/MissingParamError";
 import { CreateUserDTO } from "./CreateUserDTO";
 
 export class CreateUserUseCase {
@@ -20,7 +20,7 @@ export class CreateUserUseCase {
 
   private validateDTO(data: CreateUserDTO): void {
     Object.keys(data).forEach(requestParam => {
-      if (data[requestParam] === undefined) throw new MissinParamError(requestParam);
+      if (data[requestParam] === undefined) throw new MissingParamError(requestParam);
     });
   }
 }

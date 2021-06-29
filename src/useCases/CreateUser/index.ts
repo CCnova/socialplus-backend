@@ -3,13 +3,10 @@ import { PostgresUsersRepository } from "../../repositories/implementations/Post
 import { CreateUserController } from "./CreateUserController";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 
-const getCreateUserDependencies = () => {
+export const getCreateUserDependencies = () => {
   const postgresUsersRepository = getCustomRepository(PostgresUsersRepository);
   const createUserUseCase = new CreateUserUseCase(postgresUsersRepository);
   const createUserController = new CreateUserController(createUserUseCase);
 
   return { createUserController };
 };
-
-
-export { getCreateUserDependencies };

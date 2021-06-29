@@ -15,7 +15,7 @@ export class CreateUserController {
         instagram_email,
       });
 
-      return response.status(200).send(newUser);
+      return response.status(200).json({ User: newUser });
     } catch(error) {
       return response.status(400).json({
         message: error.message || 'Unexpected error!'
