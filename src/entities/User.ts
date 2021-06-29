@@ -7,6 +7,7 @@ export class User {
   @Column() name: string;
   @Column() email: string;
   @Column() cpf: string;
+  @Column() admin: boolean;
   @Column('float') balance: number;
   @Column('float') level: number;
   @Column('varchar', { array: true }) orders_ids: string[];

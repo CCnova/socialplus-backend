@@ -1,7 +1,5 @@
-import app from './app';
+import { initApp } from "./app";
 
-app.get('/', (request, response) => {
-	return response.send({ message: 'Hello!' });
+initApp().then(app => {
+  app.listen(3030);
 });
-
-app.listen(3030);

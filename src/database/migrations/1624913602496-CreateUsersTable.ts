@@ -11,6 +11,7 @@ export class CreateUsersTable1624913602496 implements MigrationInterface {
                     { name: 'id', type: 'uuid', isPrimary: true },
                     { name: 'name', type: 'varchar' },
                     { name: 'email', type: 'varchar' },
+                    { name: 'admin', type: 'boolean', default: 'false' },
                     { name: 'cpf', type: 'varchar' },
                     { name: 'balance', type: 'float' },
                     { name: 'level', type: 'float' },

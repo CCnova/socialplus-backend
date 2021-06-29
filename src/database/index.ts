@@ -1,3 +1,7 @@
 import { createConnection } from "typeorm";
 
-export const createDatabaseConnection = async () => await createConnection();
+const createDatabaseConnection = async () => {
+  return await createConnection();
+};
+
+export { createDatabaseConnection };

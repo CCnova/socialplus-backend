@@ -1,9 +1,14 @@
 import express from 'express';
 import 'reflect-metadata';
-import { createDatabaseConnection } from './database';
+import { setupRouter } from './routes';
 
-createDatabaseConnection();
+async function initApp(): Promise<any> {
+  const app = express();
+  const router = await setupRouter();
+  app.use(express.json());
+  app.use(router);
 
-const app = express();
+  return app;
+}
 
-export default app;
+export { initApp };

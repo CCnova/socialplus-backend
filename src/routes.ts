@@ -1,5 +1,16 @@
 import { Router } from 'express';
+import { createDatabaseConnection } from './database';
+import { getCreateUserDependencies } from './useCases/CreateUser';
 
-const router = Router();
+async function setupRouter(): Promise<Router> {
+  await createDatabaseConnection();
+  const router = Router();
+  const { createUserController } = getCreateUserDependencies();
+  
+  router.post('/users', (request, response) => createUserController.handle(request, response));
 
-// router.post('/users', );
+  return router;
+}
+
+
+export { setupRouter };
