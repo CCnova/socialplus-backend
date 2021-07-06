@@ -5,14 +5,13 @@ export class CreateUserController {
   constructor(private createUserUseCase: CreateUserUseCase) {}
 
   async handle(request: Request, response: Response) {
-    const { name, email, cpf, instagram_email, admin } = request.body;
+    const { name, email, cpf, password } = request.body;
     try {
       const newUser = await this.createUserUseCase.execute({
         name,
         email,
         cpf,
-        admin,
-        instagram_email,
+        password,
       });
 
       return response.status(200).json({ User: newUser });

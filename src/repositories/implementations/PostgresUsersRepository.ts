@@ -4,7 +4,6 @@ import { CreateUserDTO } from "../../useCases/CreateUser/CreateUserDTO";
 import { UpdateUserDTO } from "../../useCases/UpdateUser/UpdateUserDTO";
 import { IUsersRepository } from "../IUsersRepository";
 
-
 @EntityRepository(User)
 export class PostgresUsersRepository implements IUsersRepository {
   constructor(private entityManager: EntityManager) {}
@@ -25,11 +24,12 @@ export class PostgresUsersRepository implements IUsersRepository {
   }
 
   async create(data: CreateUserDTO): Promise<User> {
-
+    
     return this.entityManager.create(User, {
       ...data,
       balance: 0,
       level: 1,
+      admin: false,
       orders_ids: []
     });
   }
